@@ -1,0 +1,32 @@
+<div class="container" style="padding-top: 150px">
+    <div class="row" *ngIf="product">
+        <div class="col-6">
+            <img src="{{product.urlSlike}}" alt="{{product.naziv}}" class="w-100" />
+        </div>
+        <div class="col-6 mt-2">
+            <h2>{{product.naziv}}</h2>
+            <p class="mt-4"><strong>Cena po m2: </strong> {{product.cenaPoM2}} rsd</p>
+
+            <p><strong>Paket po m2:</strong> {{product.paketPoM2}}</p>
+            <p><strong>Dimenzija: </strong> {{product.dimenzija}}</p>
+            <p><strong>Nijansa:</strong> {{product.nijansa}} </p>
+            <h5 class="text-secondary mb-3" *ngIf="kolicinaUKorpi > 0">
+                Postoji {{kolicinaUKorpi}} proizvoda ovog tipa u tvojoj korpi.
+            </h5>
+            <div class="d-flex justify-content-start align-items-center">
+                <i (click)="decrementQuantity()" class="fa fa-minus-circle text-danger me-2"
+                    style="cursor: pointer; font-size: 2em;"></i>
+                <span class="font-weight-bold" style="font-size: 1.5em;">{{kolicina}}</span>
+                <i (click)="incrementQuantity()" class="fa fa-plus-circle text-danger ms-2"
+                    style="cursor: pointer; font-size: 2em;"></i>
+                <button class="btn btn-outline-secondary ms-4" (click)="updateBasket()"
+                    [disabled]="kolicina === kolicinaUKorpi">{{buttonText}}</button>
+            </div>
+            <div class="row mt-4">
+                <h3>Opis:</h3>
+                <p>{{product.opis}}</p>
+            </div>
+        </div>
+
+    </div>
+</div>
